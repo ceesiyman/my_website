@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>register</title>
+   <style>
+    .mybutton{
+    width: 5cm;
+    height: 1cm;
+    background-color: white;
+}
+:placeholder-shown{
+font-size: 20px;
+}
+   </style>
+</head>
+<body style="background-image: url('register2.jpg');">
+    <nav>
+        <ul>
+            <li><a href="home.html"><i class="fa fa-home fa-4lg"></i>Home</a></li>
+            <li><a href="about.html"><i class="fa fa-user-circle fa-lg"></i>About Me</a></li>
+            <li><a href="register.html"><i class="fa fa-sign-in fa-lg"></i>Register</a></li>
+            <li><a href="courses.php"><i class="fa fa-pencil fa-lg"></i>Courses</a></li>
+            <li><a href="cv.php"><i class="fa fa-mortar-board fa-lg" ></i>CV</a></li>
+            <li><a href="community.html"><i class="fa fa-users fa-lg"></i>Community Engagement</a></li>
+            <li><a href="news.html"><i class="fa fa-newspaper-o"></i>News</a></li>
+            <li><a href="library.php"><i class="fa fa-book fa-lg"></i>Library</a></li>
+            <li><a href="contact.php"><i class="fa fa-address-book-o fa-lg"></i>Contacts</a></li>
+            <li><a href="logout.php"><i class="fa fa-sign-out fa-lg"></i>Logout</a></li>
+        </ul>
+    </nav>
+    <br>
+    <h2>!</h2>
+    <h2 align="center" style="margin-top: 3%;">Please register</h2>
+    <div class="container" align="center">
+        <section>
+            <form id="myform" action="regi.php" method="post" enctype="multipart/form-data">
+                <div class="ctr">
+                <div class="field">
+                    <div id="or">
+                    <h4>Create Account</h4>
+                </div>
+                    <div class="inp">
+                        <input type="text" id="fname" name="fname" placeholder="Firstname">
+                        <div class="error"></div>
+                    </div>
+                    
+                    <div class="inp">
+                        <input type="text" id="mname" name="mname" placeholder="Middlename">
+                        <div class="error"></div>
+                    </div>
+        
+                    <div class="inp">
+                        <input type="text" id="surname" name="surname" placeholder="Surname">
+                        <div class="error"></div>
+                    </div>
+        
+                    <div class="inp">
+                        <input type="text" id="username" name="username" placeholder="Username">
+                        <div class="error"></div>
+                    </div>
+        
+                    <div class="inp">
+                        <input type="password" id="passwords" name="passwords" placeholder="Password" >
+                        <div class="error"></div>
+                    </div>
+        
+                    <div class="inp">
+                        <input type="email" id="email" name="email" placeholder="Email">
+                    <div class="error"></div>
+                    </div>
+        
+                    <input type="number" id="contact" name="contact" placeholder="Mobile number">
+                    
+                    <div class="mcv">
+                        <h5>Upload Your CV</h5>
+                    </div>
+                    <input type="file" name="file">
+                    <div class="field">
+                        <input type="text" name="face" id="face" placeholder="Facebook Username" ><br>
+                        <input type="text" name="twitter" id="twitter" placeholder="Twitter Username"><br>
+                        <input type="text" name="instagram" id="instagram" placeholder="Instagram Username"><br>
+                    </div>
+                   </div>
+                </div>
+                <div >
+                    <input type="submit" class="mybutton" value="Create Account">
+                </div>
+                <div id="or">
+                    <h5>Have an Account? <a href="login.html">Login</a></h5>
+                </div>
+                </form>
+        </section>
+    </div>
+    <script>
+        const form = document.getElementById('myform');
+        const email = document.getElementById('email');
+        const password = document.getElementById('passwords');
+        
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateInput()) {
+                form.submit();
+            }
+        });
+
+        // Validation functions and error handling
+
+        const setError = (element, message) => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+
+            errorDisplay.innerText = message;
+            inputControl.classList.add('error');
+            inputControl.classList.remove('success');
+        };
+
+        const setSuccess = (element) => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+
+            errorDisplay.innerText = '';
+            inputControl.classList.add('success');
+            inputControl.classList.remove('error');
+        };
+
+        const isValidEmail = (email) => {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        };
+
+        const isAlphanum = (password) => {
+            const re = /^(?=.*\d)(?=.*[A-Z])(.{10,50})$/;
+            const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+            return re.test(password);
+        };
+
+        const validateInput = () => {
+            const passwordValue = password.value.trim();
+            const emailValue = email.value.trim();
+
+            let isValid = true;
+
+            // Validate email
+            if (emailValue === '') {
+                setError(email, 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(emailValue)) {
+                setError(email, 'Provide a valid email address');
+                isValid = false;
+            } else {
+                setSuccess(email);
+            }
+
+            // Validate password
+            if (passwordValue === '') {
+                setError(password, 'Password is required');
+                isValid = false;
+            } else if (passwordValue.length < 10) {
+                setError(password, 'Password must be at least ten characters');
+                isValid = false;
+            } else if (!isAlphanum(passwordValue)) {
+                setError(password, 'Must contain uppercase, lowercase, number, and special characters');
+                isValid = false;
+            } else {
+                setSuccess(password);
+            }
+
+            return isValid;
+        };
+    </script>
+    </body>
+</html>

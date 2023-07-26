@@ -1,0 +1,80 @@
+nav{
+    background-color: black;
+    font-family: sans-serif;
+    font-size: 1rem;
+    position: fixed;
+    top:0px;
+    width:100%;
+    margin:0;
+    left:0;
+    z-index: 10;
+}
+nav ul{
+    list-style: none;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+   
+}
+nav li{
+    margin:.5rem 2rem;
+    position: relative;
+    display: flex;
+}
+nav a{
+    text-decoration: none;
+    color:white;
+}
+nav a:hover{
+    border-bottom-style:solid;
+    border-top-style:none;
+    border-left-style:none;
+    border-right-style:none;
+    background-color: darkgray;
+    border-bottom-color:white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(253, 254, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.full {
+    width: 70%;
+    max-width: 1000px;
+    min-height: 100px;
+    background-color: rgba(255, 255, 255, 0.836);
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    padding-top: 20px;
+    margin-top: 2%;
+    border-style: double;
+    border-color: black;
+    margin-top: 10%;
+}
+.left {
+    position: initial;
+    background-color: darkgray;
+    padding: 20px;
+ 
+}
+.right {
+    position: initial;
+    background-color: rgba(255, 255, 255, 0.849);
+    padding: 20px;
+ 
+}
+.image, .Contact, .Skills, .Language, .Hobbies, .title,
+.Summary, .Experience, .Education, .project {
+    margin-bottom: 30px;
+}
+.h2 {
+    background-color: rgb(4, 96, 150);
+}

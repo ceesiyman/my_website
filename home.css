@@ -1,0 +1,42 @@
+nav{
+    background-color: black;
+    font-family: sans-serif;
+    font-size: 1rem;
+    position: fixed;
+    top:0px;
+    width:100%;
+    margin:0;
+    left:0;
+    z-index: 10;
+}
+nav ul{
+    list-style: none;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+   
+}
+nav li{
+    margin:.5rem 2rem;
+    position: relative;
+    display: flex;
+}
+nav a{
+    text-decoration: none;
+    color:white;
+}
+nav a:hover{
+    border-bottom-style:solid;
+    border-top-style:none;
+    border-left-style:none;
+    border-right-style:none;
+    background-color: darkgray;
+    border-bottom-color:white;
+}
+body{
+    background-color: rgb(231, 222, 222);
+}
+h1 {
+    font-size: 200px;  
+  
+}
